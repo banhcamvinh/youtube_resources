@@ -1,0 +1,33 @@
+# INIT SOURCE TABLE
+create schema youtube_source;
+CREATE TABLE `customers` (
+  `customer_id` int NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `region` varchar(50) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  PRIMARY KEY (`customer_id`)
+)
+INSERT INTO `customers` VALUES (101,'Nguyen Van A','Hanoi','2023-05-20'),(102,'Tran Thi B','HCM','2023-06-10'),(103,'Le Van C','Danang','2023-07-15'),(104,'Pham Thi D','Cantho','2023-08-01');
+
+# INIT TARGET TABLE
+create schema youtube_target;
+CREATE TABLE `customers_transformed` (
+  `customer_id` bigint DEFAULT NULL,
+  `name` text,
+  `region` text,
+  `created_at` date DEFAULT NULL,
+  `etl_loaded_at` datetime DEFAULT NULL
+)
+CREATE TABLE `customers_loaded` (
+  `customer_id` bigint DEFAULT NULL,
+  `name` text,
+  `region` text,
+  `created_at` date DEFAULT NULL
+)
+CREATE TABLE `customers_loaded_transformed` (
+  `customer_id` bigint DEFAULT NULL,
+  `name` text,
+  `region` longtext,
+  `created_at` date DEFAULT NULL,
+  `etl_loaded_at` datetime NOT NULL
+)
